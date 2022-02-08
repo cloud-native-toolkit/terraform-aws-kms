@@ -4,7 +4,7 @@ module "dev_tools_mymodule" {
   key_spec               = "SYMMETRIC_DEFAULT"
   rotation_enabled       = "true"
   enabled                = "true"
-  egion                 = "us-east-1"
+  region                 = "us-east-1"
   alias                  = "kms-storage"
-  kms_alias              = "kms-storage-alias"
+  kms_alias              = "kms-storage-swe"
 }
