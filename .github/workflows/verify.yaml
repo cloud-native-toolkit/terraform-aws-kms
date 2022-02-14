@@ -1,4 +1,4 @@
-name: aws_latest
+name: Verify and release module
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the main branch
@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         testcase:
-          - ocp4_latest
+          - aws_latest
       fail-fast: false
 
     env:
