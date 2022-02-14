@@ -1,13 +1,15 @@
 variable "access_key" {
-  type = string
+  default = ""
+  type    = string
 }
 variable "secret_key" {
-  type = string
+  default = ""
+  type    = string
 }
 
 variable "description" {
   type        = string
-  default = "Storage-kms"
+  default     = "Storage-kms"
   description = "The description of the key as viewed in AWS console."
 }
 
@@ -31,7 +33,7 @@ variable "rotation_enabled" {
 
 variable "alias" {
   type        = string
-  default = "Storage-kms"
+  default     = "Storage-kms"
   description = "The display name of the key."
 }
 
@@ -41,6 +43,6 @@ variable "region" {
 
 variable "kms_alias" {
   type        = string
-  default = "Storage-kms"
+  default     = "Storage-kms"
   description = "The description of the key alias as viewed in AWS console."
 }
