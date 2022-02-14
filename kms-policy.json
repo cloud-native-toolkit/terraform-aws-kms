@@ -38,9 +38,10 @@
             "Sid": "Allow use of the key",
             "Effect": "Allow",
             "Principal": {
-                "AWS": 
-                    "arn:aws:iam::005990573564:user/fahim.shaikh"
-            },
+                "AWS": [
+                    "arn:aws:iam::005990573564:user/fahim.shaikh",
+                    "arn:aws:iam::005990573564:root"
+                ]},
             "Action": [
                 "kms:Encrypt",
                 "kms:Decrypt",
