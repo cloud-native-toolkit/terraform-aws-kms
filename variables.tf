@@ -13,7 +13,7 @@ variable "key_spec" {
 variable "enabled" {
   type        = bool
   default     = true
-  description = "Specifies whether the key is enabled."
+  description = "Specifies whether the key is enabled or not."
 }
 
 variable "policy_file" {
