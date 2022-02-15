@@ -7,7 +7,7 @@ resource "aws_kms_key" "kmskey" {
   tags = {
     Name = "var.alias"
   }
-  policy = file("${path.module}/scripts/kms-policy/kms-policy.json")
+  policy = file(var.policy_file)
 }
 
 resource "aws_kms_alias" "kmsalias" {

@@ -7,4 +7,5 @@ module "dev_kms" {
   region           = var.region
   alias            = var.alias
   kms_alias        = var.kms_alias
+  policy_file      = var.policy_file
 }

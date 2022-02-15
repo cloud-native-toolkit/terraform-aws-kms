@@ -7,6 +7,13 @@ variable "secret_key" {
   type    = string
 }
 
+
+variable "policy_file" {
+  type        = string
+  default     = "scripts/kms-policy/kms-policy.json"
+ description = "Specifies the file name for kms policy."
+}
+
 variable "description" {
   type        = string
   default     = "Storage-kms"

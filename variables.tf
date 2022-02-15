@@ -16,6 +16,12 @@ variable "enabled" {
   description = "Specifies whether the key is enabled."
 }
 
+variable "policy_file" {
+  type        = string
+  default     = "scripts/kms-policy/kms-policy.json"
+ description = "Specifies the file name for kms policy."
+}
+
 variable "rotation_enabled" {
   type        = bool
   default     = true
@@ -29,7 +35,8 @@ variable "alias" {
 }
 
 variable "region" {
-  default = "us-east-1"
+  type        = string
+  default = "us-west-2"
 }
 
 variable "kms_alias" {
