@@ -1,50 +1,55 @@
-
-# Resource Group Variables
-variable "resource_group_name" {
-  type        = string
-  description = "Existing resource group where the IKS cluster will be provisioned."
+variable "access_key" {
+  default = ""
+  type    = string
+}
+variable "secret_key" {
+  default = ""
+  type    = string
 }
 
-variable "ibmcloud_api_key" {
+
+variable "policy_file" {
   type        = string
-  description = "The api key for IBM Cloud access"
+  default     = "scripts/kms-policy/kms-policy.json"
+ description = "Specifies the file name for kms policy."
+}
+
+variable "description" {
+  type        = string
+  default     = "Storage-kms"
+  description = "The description of the key as viewed in AWS console."
+}
+
+variable "key_spec" {
+  type        = string
+  default     = "SYMMETRIC_DEFAULT"
+  description = "Specifies whether the key contains a symmetric key or an asymmetric key pair and the encryption algorithms or signing algorithms that the key supports. Valid values: SYMMETRIC_DEFAULT, RSA_2048, RSA_3072, RSA_4096, ECC_NIST_P256, ECC_NIST_P384, ECC_NIST_P521, or ECC_SECG_P256K1"
+}
+
+variable "enabled" {
+  type        = bool
+  default     = true
+  description = "Specifies whether the key is enabled."
+}
+
+variable "rotation_enabled" {
+  type        = bool
+  default     = true
+  description = "Specifies whether key rotation is enabled."
+}
+
+variable "alias" {
+  type        = string
+  default     = "Storage-kms"
+  description = "The display name of the key."
 }
 
 variable "region" {
-  type        = string
-  description = "Region for VLANs defined in private_vlan_number and public_vlan_number."
+  default = "us-east-1"
 }
 
-variable "namespace" {
+variable "kms_alias" {
   type        = string
-  description = "Namespace for tools"
-}
-
-variable "cluster_name" {
-  type        = string
-  description = "The name of the cluster"
-  default     = ""
-}
-
-variable "cluster_type" {
-  type        = string
-  description = "The type of cluster that should be created (openshift or kubernetes)"
-}
-
-variable "cluster_exists" {
-  type        = string
-  description = "Flag indicating if the cluster already exists (true or false)"
-  default     = "true"
-}
-
-variable "name_prefix" {
-  type        = string
-  description = "Prefix name that should be used for the cluster and services. If not provided then resource_group_name will be used"
-  default     = ""
-}
-
-variable "vpc_cluster" {
-  type        = bool
-  description = "Flag indicating that this is a vpc cluster"
-  default     = false
+  default     = "Storage-kms"
+  description = "The description of the key alias as viewed in AWS console."
 }
