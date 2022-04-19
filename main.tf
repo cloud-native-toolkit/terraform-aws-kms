@@ -5,7 +5,7 @@ resource "aws_kms_key" "kmskey" {
   enable_key_rotation      = var.rotation_enabled  
 
   tags = {
-    Name = "var.alias"
+    Name = "${var.alias}"
   }
   policy = file("${path.module}/${var.policy_file}")
 }
