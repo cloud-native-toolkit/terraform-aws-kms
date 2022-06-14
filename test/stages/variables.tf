@@ -50,6 +50,6 @@ variable "region" {
 
 variable "kms_alias" {
   type        = string
-  default     = "Storage-kms"
+  default     = ""
   description = "The description of the key alias as viewed in AWS console."
 }
