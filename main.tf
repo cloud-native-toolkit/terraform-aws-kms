@@ -1,3 +1,8 @@
+locals {
+  resource_group_name   = var.resource_group_name != "" && var.resource_group_name != null ? var.resource_group_name : "default"
+  name_prefix_kms           = var.name_prefix != "" && var.name_prefix != null ? var.name_prefix : local.resource_group_name
+  kms_name              = var.kms_alias != "" && var.kms_alias != null ? var.kms_alias : "${local.name_prefix_kms}"
+}
 resource "aws_kms_key" "kmskey" {
   description              = var.description
   customer_master_key_spec = var.key_spec
@@ -12,5 +17,5 @@ resource "aws_kms_key" "kmskey" {
 
 resource "aws_kms_alias" "kmsalias" {
   target_key_id = aws_kms_key.kmskey.key_id
-  name         = "alias/${var.kms_alias}"
+  name         = "alias/${local.kms_name}-key"
 }
