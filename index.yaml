@@ -24,6 +24,69 @@ versions:
         type: string
         default: Storage-kms
         description: The description of the key as viewed in AWS console.
+      - name: user_arn
+        default: '"arn:aws:iam::005990573564:root"'
+      - name: key_spec
+        type: string
+        default: SYMMETRIC_DEFAULT
+        description: >-
+          Specifies whether the key contains a symmetric key or an asymmetric
+          key pair and the encryption algorithms or signing algorithms that the
+          key supports. Valid values: SYMMETRIC_DEFAULT, RSA_2048, RSA_3072,
+          RSA_4096, ECC_NIST_P256, ECC_NIST_P384, ECC_NIST_P521, or
+          ECC_SECG_P256K1
+      - name: enabled
+        type: bool
+        default: true
+        description: Specifies whether the key is enabled.
+      - name: policy_file
+        type: string
+        default: scripts/kms-policy/kms-policy.json
+        description: Specifies the file name for kms policy.
+      - name: rotation_enabled
+        type: bool
+        default: true
+        description: Specifies whether key rotation is enabled.
+      - name: alias
+        type: string
+        default: Storage-kms
+        description: The display name of the key.
+      - name: region
+        type: string
+        default: us-west-2
+      - name: kms_alias
+        type: string
+        default: ''
+        description: The description of the key alias as viewed in AWS console
+    version: v1.1.1
+    outputs:
+      - name: key_arn
+        description: Key ARN
+      - name: key_id
+        description: Key ID
+      - name: alias_arn
+        description: Alias ARN
+      - name: alias_name
+        description: Alias name
+  - platforms: []
+    dependencies: []
+    variables:
+      - name: resource_group_name
+        type: string
+        description: >-
+          The name of the resource group where the VPC is deployed. On AWS this
+          value becomes a tag.
+        default: default
+      - name: name_prefix
+        type: string
+        description: >-
+          Prefix to be added to the names of resources which are being
+          provisioned
+        default: ''
+      - name: description
+        type: string
+        default: Storage-kms
+        description: The description of the key as viewed in AWS console.
       - name: key_spec
         type: string
         default: SYMMETRIC_DEFAULT
