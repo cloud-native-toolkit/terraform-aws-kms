@@ -52,5 +52,5 @@ variable "region" {
 variable "kms_alias" {
   type        = string
   default = ""
-  description = "The description of the key alias as viewed in AWS console."
+  description = "The description of the key alias as viewed in AWS console"
 }
