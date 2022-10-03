@@ -26,7 +26,7 @@ jobs:
     strategy:
       matrix:
         testcase:
-          - aws_latest
+          - aws_vpc
       fail-fast: false
 
     env:
