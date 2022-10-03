@@ -3,6 +3,7 @@ locals {
   name_prefix_kms           = var.name_prefix != "" && var.name_prefix != null ? var.name_prefix : local.resource_group_name
   kms_name              = var.kms_alias != "" && var.kms_alias != null ? var.kms_alias : "${local.name_prefix_kms}"
 }
+data "aws_caller_identity" "current" {}
 resource "aws_kms_key" "kmskey" {
   description              = var.description
   customer_master_key_spec = var.key_spec
@@ -21,7 +22,7 @@ resource "aws_kms_key" "kmskey" {
             "Sid": "Enable IAM User Permissions",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "${var.user_arn}"
+                "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
             },
             "Action": "kms:*",
             "Resource": "*"
@@ -30,7 +31,7 @@ resource "aws_kms_key" "kmskey" {
             "Sid": "Allow access for Key Administrators",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "${var.user_arn}"
+                "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
             },
             "Action": [
                 "kms:Create*",
@@ -54,7 +55,7 @@ resource "aws_kms_key" "kmskey" {
             "Sid": "Allow use of the key",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "${var.user_arn}"
+                "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
             },
             "Action": [
                 "kms:Encrypt",
@@ -69,7 +70,7 @@ resource "aws_kms_key" "kmskey" {
             "Sid": "Allow attachment of persistent resources",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "${var.user_arn}"
+                "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
             },
             "Action": [
                 "kms:CreateGrant",

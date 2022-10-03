@@ -13,9 +13,7 @@ variable "description" {
   default = "Storage-kms"
   description = "The description of the key as viewed in AWS console."
 }
-variable "user_arn" {
-  default     = ""  
-}
+
 variable "key_spec" {
   type        = string
   default     = "SYMMETRIC_DEFAULT"
