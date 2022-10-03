@@ -6,6 +6,8 @@ tags:
   - devops
 versions:
   - platforms: []
+    providers:
+      - name: aws
+        source: "hashicorp/aws"
     dependencies: []
     variables: []
-cloudProvider: aws
