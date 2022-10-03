@@ -14,7 +14,7 @@ variable "description" {
   description = "The description of the key as viewed in AWS console."
 }
 variable "user_arn" {
-  default =""
+  default     = ""  
 }
 variable "key_spec" {
   type        = string
