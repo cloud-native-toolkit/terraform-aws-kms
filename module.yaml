@@ -10,5 +10,4 @@ versions:
       - name: aws
         source: "hashicorp/aws"
     dependencies: []
-    variables: 
-      - name: user_arn
+    variables: []
