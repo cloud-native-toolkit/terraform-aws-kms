@@ -8,6 +8,7 @@ resource "aws_kms_key" "kmskey" {
   description              = var.description
   customer_master_key_spec = var.key_spec
   is_enabled               = var.enabled
+  deletion_window_in_days  = 10
   enable_key_rotation      = var.rotation_enabled  
 
   tags = {
@@ -31,7 +32,7 @@ resource "aws_kms_key" "kmskey" {
             "Sid": "Allow access for Key Administrators",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
+                "AWS": "${data.aws_caller_identity.current.arn}"
             },
             "Action": [
                 "kms:Create*",
@@ -55,7 +56,7 @@ resource "aws_kms_key" "kmskey" {
             "Sid": "Allow use of the key",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
+                "AWS": "${data.aws_caller_identity.current.arn}"
             },
             "Action": [
                 "kms:Encrypt",
@@ -70,7 +71,7 @@ resource "aws_kms_key" "kmskey" {
             "Sid": "Allow attachment of persistent resources",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
+                "AWS": "${data.aws_caller_identity.current.arn}"
             },
             "Action": [
                 "kms:CreateGrant",
