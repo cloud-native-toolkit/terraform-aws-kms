@@ -32,6 +32,12 @@ variable "policy_file" {
  description = "Specifies the file name for kms policy."
 }
 
+variable "user_arn" {
+  type        = string
+  default     = ""
+ description = "arn of the user for the kms key access."
+}
+
 variable "rotation_enabled" {
   type        = bool
   default     = true
